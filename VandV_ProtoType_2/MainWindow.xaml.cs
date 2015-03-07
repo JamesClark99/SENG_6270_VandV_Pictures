@@ -75,6 +75,13 @@ namespace VandV_ProtoType_2
                 BLL.BLL_Final testBLL = new BLL.BLL_Final();
 
                 /// the final logic
+                returnIBLL = testBLL.Calculate(iBLL);
+                /// 
+                t_Receipt_Area.Document = new FlowDocument();
+                t_Receipt_Area.AppendText(returnIBLL.Receipt);
+
+                t_Total_Count.Text = iBLL.Total_Count.ToString();
+                t_Total_Price.Text = iBLL.Total_Price.ToString();
 
 
             }

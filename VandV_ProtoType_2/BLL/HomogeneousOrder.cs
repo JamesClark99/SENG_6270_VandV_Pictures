@@ -62,7 +62,7 @@ namespace VandV_ProtoType_2.BLL
                 pricePerMatteFinish = 0.04M;
 
                 countMatte = gotResult.GrossMatteCount8x10;
-                count1Hour = gotResult.Gross1HourCount8x10
+                count1Hour = gotResult.Gross1HourCount8x10;
 
                 countTotal = gotResult.GrossCount8x10;
 
