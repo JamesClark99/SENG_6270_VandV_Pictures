@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="BLL\BLL_Final.cs" />
     <Compile Include="BLL\BLL_Debug.cs" />
+    <Compile Include="BLL\CustomExceptions.cs" />
     <Compile Include="BLL\HeterogeneousOrder.cs" />
     <Compile Include="BLL\HomogeneousOrder.cs" />
     <Compile Include="BLL\InterfaceToBLL.cs" />

@@ -20,20 +20,25 @@ namespace VandV_ProtoType_2
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        BLL.InterfaceToBLL tempiBLL = new BLL.InterfaceToBLL();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            clearTextAreas();
         }
 
         private void b_Calculate_Click(object sender, RoutedEventArgs e)
         {
 
+            Int32 totalcount = 0;
+            /// Create the object that will be passed to Business Logic
             BLL.InterfaceToBLL iBLL = new BLL.InterfaceToBLL();
 
-            //                iBLL.Count_4_6_Gloss_Day = Convert.ToInt32(t_Count_4_6_Gloss_Day.Text);
+            /// Populate business logic
             iBLL.Count_4_6_Gloss_Day = ValidateInput(t_Count_4_6_Gloss_Day);
-
-            //Int32.TryParse(t_Count_4_6_Gloss_Day.Text, out number); //; (t_Count_4_6_Gloss_Day.Text);
             iBLL.Count_4_6_Gloss_Hour = ValidateInput(t_Count_4_6_Gloss_Hour);
             iBLL.Count_4_6_Matte_Day = ValidateInput(t_Count_4_6_Matte_Day);
             iBLL.Count_4_6_Matte_Hour = ValidateInput(t_Count_4_6_Matte_Hour);
@@ -50,54 +55,89 @@ namespace VandV_ProtoType_2
             iBLL.Count_8_10_Matte_Day = ValidateInput(t_Count_8_10_Matte_Day);
             iBLL.Count_8_10_Matte_Hour = ValidateInput(t_Count_8_10_Matte_Hour);
 
-            iBLL.Discount_Code = t_Discount_Code.Text; 
+            iBLL.Discount_Code = t_Discount_Code.Text;
+
+            totalcount = 0;
+            totalcount = totalcount + iBLL.Count_4_6_Gloss_Day;
+            totalcount = totalcount + iBLL.Count_4_6_Gloss_Hour;
+            totalcount = totalcount + iBLL.Count_4_6_Matte_Day;
+            totalcount = totalcount + iBLL.Count_4_6_Matte_Hour;
 
 
-            if (c_Debug_Mode.IsChecked == true)
+            totalcount = totalcount + iBLL.Count_5_7_Gloss_Day;
+            totalcount = totalcount + iBLL.Count_5_7_Gloss_Hour;
+            totalcount = totalcount + iBLL.Count_5_7_Matte_Day;
+            totalcount = totalcount + iBLL.Count_5_7_Matte_Hour;
+
+
+            totalcount = totalcount + iBLL.Count_8_10_Gloss_Day;
+            totalcount = totalcount + iBLL.Count_8_10_Gloss_Hour;
+            totalcount = totalcount + iBLL.Count_8_10_Matte_Day;
+            totalcount = totalcount + iBLL.Count_8_10_Matte_Hour;
+
+            /// If checked then perform calculations with Debug Version of Business Logic
+            /// 
+            if ((totalcount > 0) & (totalcount <= 100))
             {
+                if (c_Debug_Mode.IsChecked == true)
+                {
+                    BLL.InterfaceToBLL returnIBLL = new BLL.InterfaceToBLL();
+                    BLL.BLL_Debug testBLL = new BLL.BLL_Debug();
 
-                 
-                //BLL.InterfaceToBLL iBLL = new BLL.InterfaceToBLL();
-                BLL.InterfaceToBLL returnIBLL = new BLL.InterfaceToBLL();
+                    try
+                    {
+                        returnIBLL = testBLL.Calculate(iBLL);
 
-                BLL.BLL_Debug testBLL = new BLL.BLL_Debug();
+                        t_Receipt_Area.Document = new FlowDocument();
+                        t_Receipt_Area.AppendText(returnIBLL.Receipt);
+
+                        t_Total_Count.Text = returnIBLL.Total_Count.ToString();
+                        t_Total_Price.Text = returnIBLL.Total_Price.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        t_log_area.Document = new FlowDocument();
+                        t_log_area.AppendText(ex.Message);
 
 
+                    }
+                }
 
-                returnIBLL = testBLL.Calculate(iBLL);
+                else
+                {
+                    BLL.InterfaceToBLL returnIBLL = new BLL.InterfaceToBLL();
+                    BLL.BLL_Final testBLL = new BLL.BLL_Final();
 
-                t_Receipt_Area.Document = new FlowDocument();
-                t_Receipt_Area.AppendText(returnIBLL.Receipt);
 
-                t_Total_Count.Text = returnIBLL.Total_Count.ToString();
-                t_Total_Price.Text = returnIBLL.Total_Price.ToString();
+                    try
+                    {
+                        returnIBLL = testBLL.Calculate(iBLL);
+                        /// 
+                        t_Receipt_Area.Document = new FlowDocument();
+                        t_Receipt_Area.AppendText(returnIBLL.Receipt);
+
+                        t_Total_Count.Text = returnIBLL.Total_Count.ToString();
+                        t_Total_Price.Text = returnIBLL.Total_Price.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        t_log_area.Document = new FlowDocument();
+                        t_log_area.AppendText(ex.Message);
+
+
+                    }
+
+
+                }
+
             }
-
-            else
-            {
-
-                //BLL.InterfaceToBLL iBLL = new BLL.InterfaceToBLL();
-                BLL.InterfaceToBLL returnIBLL = new BLL.InterfaceToBLL();
-
-                BLL.BLL_Final testBLL = new BLL.BLL_Final();
-
-                /// the final logic
-                
-                returnIBLL = testBLL.Calculate(iBLL);
-                /// 
-                t_Receipt_Area.Document = new FlowDocument();
-                t_Receipt_Area.AppendText(returnIBLL.Receipt);
-
-                t_Total_Count.Text = returnIBLL.Total_Count.ToString();
-                t_Total_Price.Text = returnIBLL.Total_Price.ToString();
-
-
-            }
-
         }
 
-
-//        private Int32 ValidateInput(String inputtext)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inputtext"></param>
+        /// <returns></returns>
         private Int32 ValidateInput(TextBox inputtext)
         {
             Int32 number;
@@ -122,7 +162,11 @@ namespace VandV_ProtoType_2
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b_Finish_Click(object sender, RoutedEventArgs e)
         {
             t_Receipt_Area.Document = new FlowDocument();
@@ -132,12 +176,26 @@ namespace VandV_ProtoType_2
             t_Total_Count.Text = "0";
             t_Total_Price.Text = "0";
 
+            clearTextAreas();
         }
 
         private void b_Start_Order_Click(object sender, RoutedEventArgs e)
         {
 
+            clearTextAreas();
+           
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void clearTextAreas()
+        {
+
             t_Receipt_Area.Document = new FlowDocument();
+            t_log_area.Document = new FlowDocument();
 
             t_Count_4_6_Gloss_Day.Text = "";
             t_Count_4_6_Gloss_Hour.Text = "";
@@ -155,15 +213,144 @@ namespace VandV_ProtoType_2
             t_Count_8_10_Matte_Hour.Text = "";
 
             t_Discount_Code.Text = "";
-            
+
 
             t_Total_Count.Text = "0";
             t_Total_Price.Text = "0";
 
+
+        }
+
+        private void ManageTotalCount()
+        {
+            Int32 totalcount;
+            totalcount = 0;
+
+            totalcount = totalcount + tempiBLL.Count_4_6_Gloss_Day;
+            totalcount = totalcount + tempiBLL.Count_4_6_Gloss_Hour;
+            totalcount = totalcount + tempiBLL.Count_4_6_Matte_Day;
+            totalcount = totalcount + tempiBLL.Count_4_6_Matte_Hour;
+
+
+            totalcount = totalcount + tempiBLL.Count_5_7_Gloss_Day;
+            totalcount = totalcount + tempiBLL.Count_5_7_Gloss_Hour;
+            totalcount = totalcount + tempiBLL.Count_5_7_Matte_Day;
+            totalcount = totalcount + tempiBLL.Count_5_7_Matte_Hour;
+
+
+            totalcount = totalcount + tempiBLL.Count_8_10_Gloss_Day;
+            totalcount = totalcount + tempiBLL.Count_8_10_Gloss_Hour;
+            totalcount = totalcount + tempiBLL.Count_8_10_Matte_Day;
+            totalcount = totalcount + tempiBLL.Count_8_10_Matte_Hour;
+            //l_input_count.Content = new object();
+
+            if (t_input_count != null)
+            {
+                t_input_count.Text = totalcount.ToString();
+
+                if ((totalcount > 100)||(totalcount<=0)){
+                    t_input_count.Background = Brushes.Red;
+                }
+                else
+                {
+                    t_input_count.Background = Brushes.LightGreen;
+
+                }
+
+
+            }
         }
 
 
+        //private void t_Count_4_6_Gloss_Day_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    ManageTotalCount();
+            
+        //}
 
       
+
+        private void t_Count_4_6_Gloss_Day_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_4_6_Gloss_Day = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_4_6_Gloss_Hour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_4_6_Gloss_Hour = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+        }
+
+        private void t_Count_4_6_Matte_Day_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_4_6_Matte_Day = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_4_6_Matte_Hour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_4_6_Matte_Hour = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_5_7_Gloss_Day_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_5_7_Gloss_Day = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_5_7_Gloss_Hour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_5_7_Gloss_Hour = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_5_7_Matte_Day_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_5_7_Matte_Day = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_5_7_Matte_Hour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_5_7_Matte_Hour = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_8_10_Gloss_Day_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_8_10_Gloss_Day = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_8_10_Gloss_Hour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_8_10_Gloss_Hour = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_8_10_Matte_Day_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_8_10_Matte_Day = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
+
+        private void t_Count_8_10_Matte_Hour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempiBLL.Count_8_10_Matte_Hour = ValidateInput(sender as TextBox);
+            ManageTotalCount();
+
+        }
     }
 }

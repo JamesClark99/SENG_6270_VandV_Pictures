@@ -295,5 +295,13 @@ namespace VandV_ProtoType_2.BLL
         }
 
 
+        private string logstatements;
+
+        public string LogStatements
+        {
+            get { return logstatements; }
+            set { logstatements = value; }
+        }
+
     }
 }

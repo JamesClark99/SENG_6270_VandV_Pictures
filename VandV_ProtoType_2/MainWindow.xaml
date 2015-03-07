@@ -2,25 +2,25 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:VandV_ProtoType_2" x:Class="VandV_ProtoType_2.MainWindow"
-        Title="MainWindow" Height="672.564" Width="869.843">
-    <Grid Background="#FFE4E0E0" Margin="0,0,2,6">
+        Title="MainWindow" Height="712.564" Width="869.843">
+    <Grid Background="#FFE4E0E0" Margin="0,0,2,0" Height="684" VerticalAlignment="Top">
         <Button x:Name="b_Start_Order" Content="Start Order" HorizontalAlignment="Left" Margin="30,45,0,0" VerticalAlignment="Top" Width="129" Click="b_Start_Order_Click"/>
-        <Grid HorizontalAlignment="Left" Height="209" Margin="32,85,0,0" VerticalAlignment="Top" Width="486" >
+        <Grid HorizontalAlignment="Left" Height="236" Margin="32,85,0,0" VerticalAlignment="Top" Width="486" >
             <Grid.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
             </Grid.Background>
-            <TextBox x:Name="t_Count_4_6_Matte_Hour" HorizontalAlignment="Left" Height="22" Margin="107,131,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100"/>
-            <TextBox x:Name="t_Count_5_7_Matte_Hour" HorizontalAlignment="Left" Height="23" Margin="212,130,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="t_Count_8_10_Matte_Hour" HorizontalAlignment="Left" Height="23" Margin="337,130,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="t_Count_4_6_Matte_Day" HorizontalAlignment="Left" Height="22" Margin="107,103,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100"/>
-            <TextBox x:Name="t_Count_5_7_Matte_Day" HorizontalAlignment="Left" Height="23" Margin="212,102,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="t_Count_8_10_Matte_Day" HorizontalAlignment="Left" Height="23" Margin="337,102,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="t_Count_4_6_Gloss_Hour" HorizontalAlignment="Left" Height="22" Margin="107,75,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100"/>
-            <TextBox x:Name="t_Count_5_7_Gloss_Hour" HorizontalAlignment="Left" Height="23" Margin="212,74,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="t_Count_8_10_Gloss_Hour" HorizontalAlignment="Left" Height="23" Margin="337,74,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="t_Count_4_6_Gloss_Day" HorizontalAlignment="Left" Height="22" Margin="107,47,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100"/>
-            <TextBox x:Name="t_Count_5_7_Gloss_Day" HorizontalAlignment="Left" Height="23" Margin="212,46,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="t_Count_8_10_Gloss_Day" HorizontalAlignment="Left" Height="23" Margin="337,46,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="t_Count_4_6_Matte_Hour" HorizontalAlignment="Left" Height="22" Margin="107,131,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" TextChanged="t_Count_4_6_Matte_Hour_TextChanged"/>
+            <TextBox x:Name="t_Count_5_7_Matte_Hour" HorizontalAlignment="Left" Height="23" Margin="212,130,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_5_7_Matte_Hour_TextChanged"/>
+            <TextBox x:Name="t_Count_8_10_Matte_Hour" HorizontalAlignment="Left" Height="23" Margin="337,130,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_8_10_Matte_Hour_TextChanged"/>
+            <TextBox x:Name="t_Count_4_6_Matte_Day" HorizontalAlignment="Left" Height="22" Margin="107,103,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" TextChanged="t_Count_4_6_Matte_Day_TextChanged"/>
+            <TextBox x:Name="t_Count_5_7_Matte_Day" HorizontalAlignment="Left" Height="23" Margin="212,102,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_5_7_Matte_Day_TextChanged"/>
+            <TextBox x:Name="t_Count_8_10_Matte_Day" HorizontalAlignment="Left" Height="23" Margin="337,102,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_8_10_Matte_Day_TextChanged"/>
+            <TextBox x:Name="t_Count_4_6_Gloss_Hour" HorizontalAlignment="Left" Height="22" Margin="107,75,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" TextChanged="t_Count_4_6_Gloss_Hour_TextChanged"/>
+            <TextBox x:Name="t_Count_5_7_Gloss_Hour" HorizontalAlignment="Left" Height="23" Margin="212,74,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_5_7_Gloss_Hour_TextChanged"/>
+            <TextBox x:Name="t_Count_8_10_Gloss_Hour" HorizontalAlignment="Left" Height="23" Margin="337,74,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_8_10_Gloss_Hour_TextChanged"/>
+            <TextBox x:Name="t_Count_4_6_Gloss_Day" HorizontalAlignment="Left" Height="22" Margin="107,47,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" TextChanged="t_Count_4_6_Gloss_Day_TextChanged"/>
+            <TextBox x:Name="t_Count_5_7_Gloss_Day" HorizontalAlignment="Left" Height="23" Margin="212,46,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_5_7_Gloss_Day_TextChanged"/>
+            <TextBox x:Name="t_Count_8_10_Gloss_Day" HorizontalAlignment="Left" Height="23" Margin="337,46,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="t_Count_8_10_Gloss_Day_TextChanged"/>
             <Label Content="Matte + NextDay" HorizontalAlignment="Left" Margin="7,102,0,0" VerticalAlignment="Top"/>
             <Label Content="4x6" HorizontalAlignment="Left" Margin="107,24,0,0" VerticalAlignment="Top"/>
             <Label Content="5x7" HorizontalAlignment="Left" Margin="212,24,0,0" VerticalAlignment="Top"/>
@@ -28,13 +28,15 @@
             <Label Content="Matte + 1Hour" HorizontalAlignment="Left" Margin="7,130,0,0" VerticalAlignment="Top"/>
             <Label Content="Gloss + NextDay" HorizontalAlignment="Left" Margin="7,47,0,0" VerticalAlignment="Top"/>
             <Label Content="Gloss + 1Hour" HorizontalAlignment="Left" Margin="7,75,0,0" VerticalAlignment="Top"/>
-            <Label Content="Discount Code" HorizontalAlignment="Left" Margin="7,173,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="t_Discount_Code" HorizontalAlignment="Left" Height="23" Margin="107,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+            <Label Content="Discount Code" HorizontalAlignment="Left" Margin="7,204,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="t_Discount_Code" HorizontalAlignment="Left" Height="23" Margin="107,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+            <Label x:Name="l_input_count" Content="Count:" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="t_input_count" HorizontalAlignment="Left" Height="23" Margin="107,160,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" IsReadOnly="True" FontWeight="Bold" BorderThickness="1" CaretBrush="#FF665C5C" Background="#FFA29797"/>
         </Grid>
         <Button x:Name="b_Re_Process" Content="Re-Calculate" HorizontalAlignment="Left" Margin="32,413,0,0" VerticalAlignment="Top" Width="127" Click="b_Calculate_Click"/>
         <Button x:Name="b_Finish" Content="Final Purchase" HorizontalAlignment="Left" Margin="32,440,0,0" VerticalAlignment="Top" Width="127" Click="b_Finish_Click"/>
-        <RichTextBox x:Name="t_Receipt_Area" HorizontalAlignment="Left" Height="435" Margin="523,31,0,0" VerticalAlignment="Top" Width="323">
-            <FlowDocument>
+        <RichTextBox x:Name="t_Receipt_Area" HorizontalAlignment="Left" Height="643" Margin="523,31,0,0" VerticalAlignment="Top" Width="323" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <FlowDocument IsEnabled="False">
                 <Paragraph>
                     <Run/>
                 </Paragraph>
@@ -88,17 +90,17 @@
         <Label Content="Reciept" HorizontalAlignment="Left" Margin="523,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Total Count:" HorizontalAlignment="Left" Margin="32,326,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Total Price:" HorizontalAlignment="Left" Margin="32,362,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <RichTextBox HorizontalAlignment="Left" Height="132" Margin="10,492,0,0" VerticalAlignment="Top" Width="836">
+        <RichTextBox x:Name="t_log_area" HorizontalAlignment="Left" Height="79" Margin="10,595,0,0" VerticalAlignment="Top" Width="508">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="RichTextBox"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Label Content="Temporary Log Area&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,465,0,0" VerticalAlignment="Top"/>
+        <Label Content="Temporary Log Area" HorizontalAlignment="Left" Margin="13,567,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.798,1.391"/>
         <TextBox x:Name="t_Total_Count" HorizontalAlignment="Left" Height="23" Margin="164,332,0,0" TextWrapping="Wrap" Text="0&#xD;&#xA;" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <TextBox x:Name="t_Total_Price" HorizontalAlignment="Left" Height="23" Margin="164,368,0,0" TextWrapping="Wrap" Text="0&#xD;&#xA;" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <CheckBox x:Name="c_Debug_Mode" Content="Debug Mode&#xD;&#xA;" HorizontalAlignment="Left" Margin="164,416,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="c_Debug_Mode" Content="Debug Mode&#xD;&#xA;" HorizontalAlignment="Left" Margin="164,416,0,0" VerticalAlignment="Top" IsChecked="True"/>
 
     </Grid>
 </Window>
