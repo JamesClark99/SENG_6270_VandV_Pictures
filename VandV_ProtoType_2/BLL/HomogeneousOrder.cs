@@ -10,7 +10,7 @@ namespace VandV_ProtoType_2.BLL
     {
 
         //======================================================================================================
-        public static decimal processResult(TempResult gotResult) 
+        public static KeyValuePair<decimal,string> processResult(TempResult gotResult) 
         {
             //declare some local variables
             decimal rateLEQ50 = 0.0M;
@@ -25,7 +25,7 @@ namespace VandV_ProtoType_2.BLL
             int countMatte = 0;
             int count1Hour = 0;
 
-            decimal totalPrice;
+            
             //end local var declarations
 
             //-----------------------------------------------------------
@@ -72,21 +72,23 @@ namespace VandV_ProtoType_2.BLL
             price1HourLEQ60 = 1.0M;
             price1HourGT60 = 1.50M;
 
-            totalPrice = HomogeneousOrder.calculateTotalPrice(
+            var priceAndReceipt = HomogeneousOrder.calculateTotalPrice(
                 countTotal, countMatte, count1Hour,
                     rateLEQ50, rateLEQ75, rateLEQ100,
                         pricePerMatteFinish, price1HourLEQ60, price1HourGT60);
 
-            return totalPrice;
+            return priceAndReceipt;
 
         }
         //======================================================================================================
-        private static decimal calculateTotalPrice(
+        private static KeyValuePair<decimal,string> calculateTotalPrice(
             int countTotal, int countMatte, int count1Hour,
                 decimal rateLEQ50, decimal rateLEQ75, decimal rateLEQ100,
                     decimal pricePerMatteFinish, decimal price1HourLEQ60, decimal price1HourGT60)
         {
             decimal totalPrice = 0.0M;
+            string formatter = "0.00";
+            string receipt = "";
             //-----------------------------------------------------------
             //calculate the base price based on number of prints alone..
             //-----------------------------------------------------------
@@ -104,6 +106,14 @@ namespace VandV_ProtoType_2.BLL
             else
                 throw new Exception("Total Prints  is greater than 100. Error@loc: 89719823.");
 
+            //update the receipt string
+            receipt += "Total prints for homogeneous order: " + countTotal.ToString() + ".\n";
+            receipt += "Rates applicable: \n" +
+                "\t Rate for 00 < n <=  50: " +  rateLEQ50.ToString(formatter) + "\n " +
+                "\t Rate for 50 < n <=  75: " +  rateLEQ75.ToString(formatter) + "\n " +
+                "\t Rate for 75 < n <= 100: " + rateLEQ100.ToString(formatter) + "\n"  ;
+
+            receipt += "Total price evaluated: " + totalPrice.ToString(formatter)+"\n";
             //make an assertion
             if (totalPrice <= 0)
                 throw new Exception("Total Price is <= 0. Invalid state. Error@loc: 761093874.");
@@ -112,7 +122,12 @@ namespace VandV_ProtoType_2.BLL
             //Now account for any matte finish..
             //-----------------------------------------------------------
             if (countMatte >= 0)
+            {
+
                 totalPrice = (decimal)countMatte * pricePerMatteFinish + totalPrice;
+                receipt += "Total after adjusting cost for: "+countMatte.ToString()+ " Matte prints \n"+ 
+                        "\t @ rate: "+ pricePerMatteFinish.ToString(formatter)+"/print equals: " + totalPrice.ToString(formatter) + "\n";
+            }
             else
                 //countMatte <0
                 throw new Exception("Total Matte Counts is less than zero. Invalid state. Aborting calculations. Error@loc 098173879.");
@@ -132,10 +147,13 @@ namespace VandV_ProtoType_2.BLL
             else
                 totalPrice = totalPrice + price1HourGT60;
 
+            receipt += "Total after adjusting cost for: " + count1Hour.ToString() + " 1-hour prints \n" +
+                "equals: " + totalPrice.ToString(formatter) + "\n";
+
             //-----------------------------------------------------------
             //return total price
             //-----------------------------------------------------------
-            return totalPrice;
+            return new KeyValuePair<decimal,string> (totalPrice,receipt);
         }
         //======================================================================================================
 

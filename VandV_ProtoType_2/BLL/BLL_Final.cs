@@ -36,19 +36,20 @@ namespace VandV_ProtoType_2.BLL
             //get the mode of calculation
             TempResult gotResult = getModeAndGrossCounts(iBLL);
 
-            //total price
-            decimal totalPrice;
-
+            KeyValuePair<decimal, string> priceAndReceipt;
             //-----------------------------------------------------------
             //evaluate the total price by calling the specific methods..
             //-----------------------------------------------------------
             if(gotResult.Mode.Equals("Homogeneous"))
             {
-                totalPrice=HomogeneousOrder.processResult(gotResult);//process order
+                //returns a <Key,Value> pair. Key: price, Value: receipt
+                priceAndReceipt=HomogeneousOrder.processResult(gotResult);//process order
+                
             }
             else if(gotResult.Mode.Equals("Heterogeneous"))
             {
-                totalPrice=HeterogeneousOrder.processResult(gotResult);//process order
+                //returns a <Key,Value> pair. Key: price, Value: receipt
+                priceAndReceipt=HeterogeneousOrder.processResult(gotResult);//process order
             }
             else
             {
@@ -56,14 +57,30 @@ namespace VandV_ProtoType_2.BLL
                 throw new Exception("Invalid value obtained! Error @ loc 184-194871-9.");
             }
 
+            //-----------------------------------------------------------
+            //evaluate the dicounted price here.
+            //skipping for now...
+            //....
+            //..
+            //-----------------------------------------------------------
+
+            //-----------------------------------------------------------
             var resultBLL=new BLL.InterfaceToBLL();
-            //do assignments...
+            //-----------------------------------------------------------
+            //do assignments... and return the computed price, receipt, and discount.
+            
+            resultBLL.Total_Price = priceAndReceipt.Key;
+            resultBLL.Receipt = priceAndReceipt.Value;
+            //When ready, assign discount here.
+
+            //return the final result
             return resultBLL;
         }
         //======================================================================================================
         public TempResult getModeAndGrossCounts(BLL.InterfaceToBLL iBLL)
         {
-            
+            //This method throws exception: OrderGT100Error(message)
+
             var grossCount4x6 = iBLL.Count_4_6_Gloss_Day + iBLL.Count_4_6_Gloss_Hour +
                                 iBLL.Count_4_6_Matte_Day + iBLL.Count_4_6_Matte_Hour;
 
@@ -87,6 +104,8 @@ namespace VandV_ProtoType_2.BLL
 
             var mode = "";
             var size = "";
+            
+            int grossHomogeneousCount=101;
             //Begin the actual sorting process..
             if (grossCount4x6 == 0 && grossCount5x7 == 0 && grossCount8x10 >= 0)
             {
@@ -102,6 +121,7 @@ namespace VandV_ProtoType_2.BLL
 
                 }
 
+                grossHomogeneousCount = grossCount8x10;
                 size = "8x10";
             }
             else if (grossCount4x6 == 0 && grossCount8x10 == 0 && grossCount5x7 >= 0)
@@ -117,6 +137,7 @@ namespace VandV_ProtoType_2.BLL
                 }
 
                 size = "5x7";
+                grossHomogeneousCount = grossCount5x7;
             }
             else if (grossCount5x7 == 0 && grossCount8x10 == 0 && grossCount4x6 >= 0)
             {
@@ -130,11 +151,22 @@ namespace VandV_ProtoType_2.BLL
                     mode = "Heterogenous";
                 }
 
+                grossHomogeneousCount = grossCount4x6;
                 size = "4x6";
             }
             else
                 throw new Exception("Unable to determine a suited Mode and Size. Error@loc 109837428.");
 
+
+            //Check and see that the order is less than or equal to 100
+            if (grossHomogeneousCount > 100)
+                throw new OrderGT100Error("Total Homogeneous Gross Count >100!");
+            else if (grossHomogeneousCount == 0)
+                throw new OrderLEQ0Error("Total Homogeneous Gross Count = 0 !");
+            else if (grossHomogeneousCount < 0)
+                throw new Exception(" This is an internal application logic error. I shouldn't be here.");
+            else
+                Console.WriteLine("Proceeding with analysis. Gross Homogeneous Order Count: " + grossHomogeneousCount.ToString() + ".\n");
 
             TempResult toReturn;
             toReturn.GrossCount4x6 = grossCount4x6;
@@ -185,6 +217,11 @@ namespace VandV_ProtoType_2.BLL
                 return true;
             else
                 return false;
+        }
+        //======================================================================================================
+        public bool validateData()
+        {
+            return false;
         }
     }
 }
