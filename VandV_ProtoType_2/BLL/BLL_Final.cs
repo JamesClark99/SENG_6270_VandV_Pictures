@@ -133,7 +133,7 @@ namespace VandV_ProtoType_2.BLL
                 }
                 else
                 {
-                    mode = "Heterogenous";
+                    mode = "Heterogeneous";
                 }
 
                 size = "5x7";
@@ -148,7 +148,7 @@ namespace VandV_ProtoType_2.BLL
                 }
                 else
                 {
-                    mode = "Heterogenous";
+                    mode = "Heterogeneous";
                 }
 
                 grossHomogeneousCount = grossCount4x6;
