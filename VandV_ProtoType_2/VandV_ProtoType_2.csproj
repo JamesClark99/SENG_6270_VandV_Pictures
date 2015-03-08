@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>VandV_ProtoType_2.BLL.BLL_UnitTestingMocker</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,6 +66,7 @@
     </Compile>
     <Compile Include="BLL\BLL_Final.cs" />
     <Compile Include="BLL\BLL_Debug.cs" />
+    <Compile Include="BLL\BLL_UnitTestingMocker.cs" />
     <Compile Include="BLL\CustomExceptions.cs" />
     <Compile Include="BLL\HeterogeneousOrder.cs" />
     <Compile Include="BLL\HomogeneousOrder.cs" />
