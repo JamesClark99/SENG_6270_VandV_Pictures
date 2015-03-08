@@ -52,7 +52,7 @@ namespace VandV_ProtoType_2.BLL
 
                 countMatte = gotResult.GrossMatteCount5x7;
                 count1Hour = gotResult.Gross1HourCount5x7;
-                countTotal = gotResult.GrossCount8x10;
+                countTotal = gotResult.GrossCount5x7;
             }
             else if (gotResult.Size.Equals("8x10"))
             {
@@ -147,8 +147,8 @@ namespace VandV_ProtoType_2.BLL
             else
                 totalPrice = totalPrice + price1HourGT60;
 
-            receipt += "Total after adjusting cost for: " + count1Hour.ToString() + " 1-hour prints \n" +
-                "equals: " + totalPrice.ToString(formatter) + "\n";
+            receipt += "Total after adjusting cost for: " + count1Hour.ToString() + " one-hour prints \n" +
+                "\t equals: " + totalPrice.ToString(formatter) + "\n";
 
             //-----------------------------------------------------------
             //return total price

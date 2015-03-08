@@ -155,8 +155,12 @@ namespace VandV_ProtoType_2.BLL
                 size = "4x6";
             }
             else
-                throw new Exception("Unable to determine a suited Mode and Size. Error@loc 109837428.");
-
+            {
+                //throw new Exception("Unable to determine a suited Mode and Size. Error@loc 109837428.");
+                mode = "Heterogeneous";
+                grossHomogeneousCount = grossCount4x6 + grossCount5x7+grossCount8x10;
+                size = "Does Not Matter";
+            }
 
             //Check and see that the order is less than or equal to 100
             if (grossHomogeneousCount > 100)

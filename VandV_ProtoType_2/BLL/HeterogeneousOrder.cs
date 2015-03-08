@@ -84,10 +84,10 @@ namespace VandV_ProtoType_2.BLL
             else
             {
                 totalPrice += price1HourProcessGT60;
-                receipt += "Added amount: " + price1HourProcessGT60.ToString(formatter) + " for processing 1 hour prints.";
+                receipt += "Added amount: " + price1HourProcessGT60.ToString(formatter) + " for processing 1 hour prints.\n";
             }
-                
 
+            receipt += "Total final price: " + totalPrice.ToString(formatter);
             //now that everything is done, return the evauated price.
             return new KeyValuePair<decimal,string>(totalPrice,receipt);
         }
