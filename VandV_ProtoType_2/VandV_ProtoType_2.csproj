@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>VandV_ProtoType_2.BLL.BLL_UnitTestingMocker</StartupObject>
+    <StartupObject>VandV_ProtoType_2.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VandV_ProtoType_2.BLL
 {
-    struct TestCase:IEnumerable,IEnumerator
+    struct TestCase
     {
         public int[] inputs;
         public decimal expectTotalPrice;
@@ -25,20 +25,28 @@ namespace VandV_ProtoType_2.BLL
         {
            bool passedAllTest = true;
 
-           //Implement some kind of enumerating structure.. so that you can do
-           /*
-            * for(TestCase aTest in myTestCases)
-            * {
-            *   bool success=runTest(aTest)
-            *   if(!success)
-            *       passedAllTest=false;
-            * }
-            * 
-            */
+           //define list of test cases
+           List<TestCase> myTestCases = new List<TestCase>();
 
+           //add your test case in the list.
+           myTestCases.Add(testAA());
+           myTestCases.Add(testBB());
+           myTestCases.Add(testCC());
+
+           //Implement some kind of enumerating structure.. so that you can do
+           
+           foreach (TestCase aTest in myTestCases)
+           {
+                bool success=runTest(aTest);
+                if(!success)
+                   passedAllTest=false;
+           }
+             
+            
+           
            if(!passedAllTest)
            {
-               Console.WriteLine("*********** One or more tests failed. Please review **********");
+               Console.WriteLine("*********** One or more tests failed. Please review. **********");
 
            }else
            {
@@ -119,7 +127,7 @@ namespace VandV_ProtoType_2.BLL
            return aCase;
        }
        //=====================================================================
-       //unit test methodA
+       //unit test method
        public TestCase testBB()
        {
            int[] arr =
@@ -136,7 +144,31 @@ namespace VandV_ProtoType_2.BLL
            //initialize values
            aCase.id = "BB";
            aCase.inputs = arr;
-           aCase.expectTotalPrice = 78.8m;
+           aCase.expectTotalPrice = 37.31m;
+           aCase.discountCode = "HELLO_KITTIE";
+
+           //return test case
+           return aCase;
+       }
+       //=====================================================================
+       //unit test method
+       public TestCase testCC()
+       {
+           int[] arr =
+           {
+                10,  11,  2,
+                9,  2,  5,
+                13,  3,  3,
+                4,  12,  9
+           };
+
+           //declare a test case
+           TestCase aCase;
+
+           //initialize values
+           aCase.id = "CC";
+           aCase.inputs = arr;
+           aCase.expectTotalPrice = 47.31m;
            aCase.discountCode = "HELLO_KITTIE";
 
            //return test case
