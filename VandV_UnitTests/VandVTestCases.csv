@@ -1,7 +1,8 @@
-4_6_Gloss_NextDay,4_6_Gloss_Hour,4_6_Matte_NextDay,4_6_Matte_Hour,5_7_Gloss_NextDay,5_7_Gloss_Hour,5_7_Matte_NextDay,5_7_Matte_Hour,8_10_Gloss_NextDay,8_10_Gloss_Hour,8_10_Matte_NextDay,8_10_Matte_Hour,Discount Code,Expected_Total
-1,1,1,1,,,,,,,,,,2.84
-2,2,2,2,,,,,,,,,,3.68
-3,3,3,3,,,,,,,,,,4.52
-4,4,4,4,,,,,,,,,,5.36
-4,3,4,4,,,,,,,,,,5.36
-3,4,4,4,,,,,,,,,,5.36
+TestCaseReference,4_6_Gloss_NextDay,4_6_Gloss_Hour,4_6_Matte_NextDay,4_6_Matte_Hour,5_7_Gloss_NextDay,5_7_Gloss_Hour,5_7_Matte_NextDay,5_7_Matte_Hour,8_10_Gloss_NextDay,8_10_Gloss_Hour,8_10_Matte_NextDay,8_10_Matte_Hour,Discount Code,Expected_Total
+RF1,1,1,1,1,0,0,0,0,0,0,0,0,,2.84
+RF2,2,2,2,2,0,0,0,0,0,0,0,0,,3.68
+RF3,3,3,3,3,0,0,0,0,0,0,0,0,,4.52
+RF4,4,4,4,4,0,0,0,0,0,0,0,0,,5.36
+RF5,4,3,4,4,0,0,0,0,0,0,0,0,,5.36
+RF6,3,4,4,4,0,0,0,0,0,0,0,0,,5.36
+RF7,1,1,1,1,1,1,1,1,1,1,1,1,,7.84

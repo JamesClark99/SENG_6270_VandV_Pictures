@@ -11,7 +11,7 @@ namespace VandV_UnitTests
         public class UnitTest_Homogeneous
         {
             [TestMethod]
-            public void TestMethod1()
+            public void TestMethod_Homogeneous_1()
             {
 
                 VandV_ProtoType_2.BLL.InterfaceToBLL b = new InterfaceToBLL();

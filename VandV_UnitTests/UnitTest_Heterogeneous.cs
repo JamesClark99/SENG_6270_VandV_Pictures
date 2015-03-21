@@ -10,7 +10,7 @@ namespace VandV_UnitTests
     public class UnitTest_Heterogeneous
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod_Heterogeneous_1()
         {
 
             VandV_ProtoType_2.BLL.InterfaceToBLL b = new InterfaceToBLL();
