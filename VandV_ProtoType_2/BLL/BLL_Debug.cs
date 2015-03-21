@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VandV_ProtoType_2.BLL
 {
-    class BLL_Debug
+    public class BLL_Debug
     {
 
         Int32 countOfTypes;

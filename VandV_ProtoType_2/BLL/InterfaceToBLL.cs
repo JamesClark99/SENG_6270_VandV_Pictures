@@ -6,35 +6,35 @@ using System.Threading.Tasks;
 
 namespace VandV_ProtoType_2.BLL
 {
-    class InterfaceToBLL
+    public class InterfaceToBLL
     {
          
         //----------------------------------------
         //4x6
         //----------------------------------------
 
-        private int count_4_6_Matte_Day;
+        private int count_4_6_Matte_Day = 0;
 
         public int Count_4_6_Matte_Day
         {
             get { return count_4_6_Matte_Day; }
             set { count_4_6_Matte_Day = value; }
         }
-        private int count_4_6_Gloss_Day;
+        private int count_4_6_Gloss_Day = 0;
 
         public int Count_4_6_Gloss_Day
         {
             get { return count_4_6_Gloss_Day; }
             set { count_4_6_Gloss_Day = value; }
         }
-        private int count_4_6_Matte_Hour;
+        private int count_4_6_Matte_Hour = 0;
 
         public int Count_4_6_Matte_Hour
         {
             get { return count_4_6_Matte_Hour; }
             set { count_4_6_Matte_Hour = value; }
         }
-        private int count_4_6_Gloss_Hour;
+        private int count_4_6_Gloss_Hour = 0;
 
         public int Count_4_6_Gloss_Hour
         {
@@ -48,28 +48,28 @@ namespace VandV_ProtoType_2.BLL
         //5x7
         //----------------------------------------
 
-        private int count_5_7_Matte_Day;
+        private int count_5_7_Matte_Day = 0;
 
         public int Count_5_7_Matte_Day
         {
             get { return count_5_7_Matte_Day; }
             set { count_5_7_Matte_Day = value; }
         }
-        private int count_5_7_Gloss_Day;
+        private int count_5_7_Gloss_Day = 0;
 
         public int Count_5_7_Gloss_Day
         {
             get { return count_5_7_Gloss_Day; }
             set { count_5_7_Gloss_Day = value; }
         }
-        private int count_5_7_Matte_Hour;
+        private int count_5_7_Matte_Hour = 0;
 
         public int Count_5_7_Matte_Hour
         {
             get { return count_5_7_Matte_Hour; }
             set { count_5_7_Matte_Hour = value; }
         }
-        private int count_5_7_Gloss_Hour;
+        private int count_5_7_Gloss_Hour = 0;
 
         public int Count_5_7_Gloss_Hour
         {
@@ -83,28 +83,28 @@ namespace VandV_ProtoType_2.BLL
         //8x10
         //----------------------------------------
 
-        private int count_8_10_Matte_Day;
+        private int count_8_10_Matte_Day = 0;
 
         public int Count_8_10_Matte_Day
         {
             get { return count_8_10_Matte_Day; }
             set { count_8_10_Matte_Day = value; }
         }
-        private int count_8_10_Gloss_Day;
+        private int count_8_10_Gloss_Day = 0;
 
         public int Count_8_10_Gloss_Day
         {
             get { return count_8_10_Gloss_Day; }
             set { count_8_10_Gloss_Day = value; }
         }
-        private int count_8_10_Matte_Hour;
+        private int count_8_10_Matte_Hour = 0;
 
         public int Count_8_10_Matte_Hour
         {
             get { return count_8_10_Matte_Hour; }
             set { count_8_10_Matte_Hour = value; }
         }
-        private int count_8_10_Gloss_Hour;
+        private int count_8_10_Gloss_Hour = 0;
 
         public int Count_8_10_Gloss_Hour
         {
@@ -118,7 +118,7 @@ namespace VandV_ProtoType_2.BLL
         // Discount Code
         //----------------------------------------
 
-        private string discount_Code;
+        private string discount_Code = "";
         public string Discount_Code
         {
           get { return discount_Code; }
@@ -246,7 +246,7 @@ namespace VandV_ProtoType_2.BLL
         // Total Count
         //----------------------------------------
 
-        private int total_Count;
+        private int total_Count = 0;
 
         public int Total_Count
         {
@@ -259,7 +259,7 @@ namespace VandV_ProtoType_2.BLL
         // Total Price
         //----------------------------------------
 
-        private decimal total_Price;
+        private decimal total_Price = 0;
 
         public decimal Total_Price
         {
@@ -272,7 +272,7 @@ namespace VandV_ProtoType_2.BLL
         // Total Applied Discount
         //----------------------------------------
 
-        private decimal total_Discount;
+        private decimal total_Discount = 0;
         public decimal Total_Discount
         {
             get { return total_Discount; }
@@ -286,7 +286,7 @@ namespace VandV_ProtoType_2.BLL
         // Reciept String of transactions
         //----------------------------------------
 
-        private string receipt;
+        private string receipt = "";
 
         public string Receipt
         {
@@ -295,7 +295,7 @@ namespace VandV_ProtoType_2.BLL
         }
 
 
-        private string logstatements;
+        private string logstatements ="";
 
         public string LogStatements
         {
