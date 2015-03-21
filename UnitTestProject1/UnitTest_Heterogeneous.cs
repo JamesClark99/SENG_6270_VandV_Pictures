@@ -17,7 +17,7 @@ namespace UnitTestProject1
             VandV_ProtoType_2.BLL.BLL_Debug d = new BLL_Debug();
 
             b.Count_4_6_Gloss_Day = 3;
-
+            b.Count_4_6_Gloss_Hour = 4;
             Assert.AreEqual(d.Calculate(b).Total_Price, 3.0);
 
         }
