@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VandV_ProtoType_2;
 using VandV_ProtoType_2.BLL;
 
-namespace UnitTestProject1
+namespace VandV_UnitTests
 {
     [TestClass]
     public class UnitTest_Heterogeneous
