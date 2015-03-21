@@ -5,23 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.VisualStudio.TestTools.UnitTesting; //james
+
 namespace VandV_ProtoType_2.BLL
 {
-    struct TestCase
+    public struct TestCase
     {
         public int[] inputs;
         public decimal expectTotalPrice;
         public string discountCode;
         public string id;
     }
-    class BLL_UnitTestingMocker
+    [TestClass]                                     //james
+    public class BLL_UnitTestingMocker
     {
-        static void Main(string[] args)
-        {
-            new BLL_UnitTestingMocker().runTests();
-        }
+        //static void Main(string[] args)
+        //{
+        //    new BLL_UnitTestingMocker().runTests();
+        //}
         //=====================================================================
-       public void runTests()
+        [TestMethod]                                        //james
+        public void runTests()
         {
            bool passedAllTest = true;
 
@@ -37,9 +41,12 @@ namespace VandV_ProtoType_2.BLL
            
            foreach (TestCase aTest in myTestCases)
            {
-                bool success=runTest(aTest);
-                if(!success)
-                   passedAllTest=false;
+               bool success = runTest(aTest);
+               if (!success)
+                   passedAllTest = false;
+
+               Assert.AreEqual(success, true);
+
            }
              
             
