@@ -7,7 +7,7 @@ using VandV_ProtoType_2.BLL;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest2
+    public class UnitTest_Heterogeneous
     {
         [TestMethod]
         public void TestMethod1()

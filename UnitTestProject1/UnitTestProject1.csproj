@@ -50,9 +50,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="UnitTest_Homogeneous.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest2.cs" />
+    <Compile Include="UnitTest_Heterogeneous.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VandV_ProtoType_2\VandV_ProtoType_2.csproj">
