@@ -42,6 +42,9 @@ namespace VandV_UnitTests
             Decimal test_result = 0;
 
             test_result = d.Calculate(b).Total_Price;
+
+            TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
+
             Assert.AreEqual(test_result, expected_result);
 
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
