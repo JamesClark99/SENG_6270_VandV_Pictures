@@ -437,6 +437,8 @@ namespace VandV_ProtoType_2.BLL
             iBLL.Receipt = iBLL.Receipt + "\n" + "Total :: " + iBLL.Total_Price;
             iBLL.Receipt = iBLL.Receipt + "\n" + "---------------------";
 
+            iBLL.Total_Price = Math.Round(iBLL.Total_Price,2);
+
             return iBLL;
         }
 

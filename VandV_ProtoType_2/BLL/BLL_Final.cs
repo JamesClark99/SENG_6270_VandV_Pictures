@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace VandV_ProtoType_2.BLL
 {
     //======================================================================================================
-    struct TempResult
+    public struct TempResult
     {
         public int GrossCount4x6;
         public int GrossCount5x7;
@@ -27,7 +27,7 @@ namespace VandV_ProtoType_2.BLL
     }
     //======================================================================================================
     //Begin Class def:
-    class BLL_Final
+    public class BLL_Final
     {
 
         //======================================================================================================
