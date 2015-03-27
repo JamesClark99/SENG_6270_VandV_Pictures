@@ -11,7 +11,7 @@ namespace VandV_UnitTests
         [TestMethod]
 //        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"C:\JamesWorkingFolders\VisualStudio2013\t\VandV_ProtoType_2\VandV_UnitTests\VandVTestCases.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
-        public void TestMethod_CSV_Debug()
+        public void TestMethod_CSV_Test2()
         {
             String errorMessage = "";
             String testCaseReference = "";
