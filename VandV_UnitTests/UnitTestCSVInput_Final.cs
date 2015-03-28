@@ -11,7 +11,7 @@ namespace VandV_UnitTests
     public class UnitTestCSVInput_Final
     {
         [TestMethod]
-        //        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"C:\JamesWorkingFolders\VisualStudio2013\t\VandV_ProtoType_2\VandV_UnitTests\VandVTestCases.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
+        
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases_Homogeneous.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
         public void TestMethod_CSV_Test1()
         {
@@ -23,7 +23,7 @@ namespace VandV_UnitTests
 
             VandV_ProtoType_2.BLL.BLL_Final d = new BLL_Final();
 
-
+            Console.WriteLine("Starting test..");
             b.Count_4_6_Gloss_Day = Convert.ToInt32(TestContext.DataRow["4_6_Gloss_NextDay"]);
             b.Count_4_6_Gloss_Hour = Convert.ToInt32(TestContext.DataRow["4_6_Gloss_Hour"]);
             b.Count_4_6_Matte_Day = Convert.ToInt32(TestContext.DataRow["4_6_Matte_NextDay"]);
@@ -51,6 +51,7 @@ namespace VandV_UnitTests
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
 
             Assert.AreEqual(test_result, expected_result);
+            Console.WriteLine("Completing test..");
 
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
 

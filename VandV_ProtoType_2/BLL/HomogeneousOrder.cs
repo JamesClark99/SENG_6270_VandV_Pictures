@@ -102,7 +102,7 @@ namespace VandV_ProtoType_2.BLL
                     (decimal)(countTotal - 50) * rateLEQ75 + (decimal)50 * rateLEQ50;
             else if (countTotal <= 100)
                 totalPrice =
-                    (decimal)(countTotal - 75) * rateLEQ100 + (decimal)75 * rateLEQ75 + (decimal)50 * rateLEQ50;
+                    (decimal)(countTotal - 75) * rateLEQ100 + (decimal)25 * rateLEQ75 + (decimal)50 * rateLEQ50;
             else
                 throw new Exception("Total Prints  is greater than 100. Error@loc: 89719823.");
 
@@ -142,7 +142,7 @@ namespace VandV_ProtoType_2.BLL
             {
                 ;
             }
-            else if (count1Hour < 60)
+            else if (count1Hour <= 60)
                 totalPrice = totalPrice + price1HourLEQ60;
             else
                 totalPrice = totalPrice + price1HourGT60;

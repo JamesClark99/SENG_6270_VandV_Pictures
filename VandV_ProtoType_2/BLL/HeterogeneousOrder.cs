@@ -54,7 +54,10 @@ namespace VandV_ProtoType_2.BLL
             receipt += "Total  5x7 prints counts: " + countTotal5x7.ToString() + " priced @ " + ratePer5x7.ToString(formatter) + "/print cost: " + evalSubTotal(countTotal5x7, ratePer5x7).ToString(formatter) + "\n";
 
             receipt += "Total 8x10 prints counts: " + countTotal8x10.ToString() + " priced @ " + ratePer8x10.ToString(formatter) + "/print cost: " + evalSubTotal(countTotal4x6, ratePer8x10).ToString(formatter) + "\n";
-            
+
+            receipt += "Adjustment for Matte  4x6 prints: " + evalSubTotal(countMatte4x6, ratePerMatte4x6).ToString() + "\n";
+            receipt += "Adjustment for Matte  5x7 prints: " + evalSubTotal(countMatte5x7, ratePerMatte5x7).ToString() + "\n";
+            receipt += "Adjustment for Matte 8x10 prints:" + evalSubTotal(countMatte8x10, ratePerMatte8x10).ToString() + "\n"; 
             //calculate the gross total number of prints
             int grossTotal1HourPrints =
                 count1Hour5x7 + count1Hour8x10 + count1Hour4x6;
@@ -62,6 +65,7 @@ namespace VandV_ProtoType_2.BLL
             //put this information in the receipt
             receipt += "Total 1 hour prints: " + grossTotal1HourPrints.ToString()+"\n";
             
+
             //calculate the total price added as a result of 1-hour processing
             if (grossTotal1HourPrints < 0)
             {
@@ -81,12 +85,16 @@ namespace VandV_ProtoType_2.BLL
 
             }
                 
-            else
+            else if(grossTotal1HourPrints >60 && grossTotal1HourPrints <=100)
             {
                 totalPrice += price1HourProcessGT60;
                 receipt += "Added amount: " + price1HourProcessGT60.ToString(formatter) + " for processing 1 hour prints.\n";
             }
 
+            else
+            {
+                throw new Exception("I should not be here..");
+            }
             receipt += "Total final price: " + totalPrice.ToString(formatter);
             //now that everything is done, return the evauated price.
             return new KeyValuePair<decimal,string>(totalPrice,receipt);

@@ -3,10 +3,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VandV_UnitTests
 {
-    [TestClass]
+    //[TestClass]
     public class UnitTest_Generic
     {
-        [TestMethod]
+        //[TestMethod]
         public void TestMethod_TestTheTesting()
         {
         }
