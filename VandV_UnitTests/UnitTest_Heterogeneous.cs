@@ -39,16 +39,22 @@ namespace VandV_UnitTests
             b.Count_8_10_Matte_Day = Convert.ToInt32(TestContext.DataRow["8_10_Matte_NextDay"]);
             b.Count_8_10_Matte_Hour = Convert.ToInt32(TestContext.DataRow["8_10_Matte_Hour"]);
 
+            b.Discount_Code = Convert.ToString(TestContext.DataRow["Discount Code"]);
+
+
             Decimal expected_result = Convert.ToDecimal(TestContext.DataRow["Expected_Total"]);
             testCaseReference = Convert.ToString(TestContext.DataRow["TestCaseReference"]);
 
             Decimal test_result = 0;
-
-            test_result = WrapperOnFinal(b);
+            //                test_result = WrapperOnFinal(b);
+            b = WrapperOnFinal(b);
+            test_result = b.Total_Price;
+            //test_result = (Decimal)d.Calculate(b).Total_Price;
 
             //test_result = (Decimal)d.Calculate(b).Total_Price;
 
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
+            TestContext.WriteLine(string.Format("Test Case: {0} -- reciept: {1}", testCaseReference, b.Receipt));
 
             Assert.AreEqual(test_result, expected_result);
 
@@ -64,14 +70,16 @@ namespace VandV_UnitTests
         }
 
 
-        public Decimal WrapperOnFinal(InterfaceToBLL b)
+        public InterfaceToBLL WrapperOnFinal(InterfaceToBLL b)
         {
             Decimal test_result;
             VandV_ProtoType_2.BLL.BLL_Final d = new BLL_Final();
 
             try
             {
-                test_result = (Decimal)d.Calculate(b).Total_Price;
+                //test_result = (Decimal)d.Calculate(b).Total_Price;
+                //b.Total_Price = (Decimal)d.Calculate(b).Total_Price;
+                b = d.Calculate(b);
             }
             catch (Exception ex)
             {
@@ -80,7 +88,8 @@ namespace VandV_UnitTests
 
             }
 
-            return test_result;
+            //                return test_result;
+            return b;
         }
 
 
