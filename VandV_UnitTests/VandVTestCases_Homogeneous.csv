@@ -1,4 +1,4 @@
-TestCaseReference,4_6_Gloss_NextDay,4_6_Gloss_Hour,4_6_Matte_NextDay,4_6_Matte_Hour,5_7_Gloss_NextDay,5_7_Gloss_Hour,5_7_Matte_NextDay,5_7_Matte_Hour,8_10_Gloss_NextDay,8_10_Gloss_Hour,8_10_Matte_NextDay,8_10_Matte_Hour,Discount,Expected_Total
+TestCaseReference,4_6_Gloss_NextDay,4_6_Gloss_Hour,4_6_Matte_NextDay,4_6_Matte_Hour,5_7_Gloss_NextDay,5_7_Gloss_Hour,5_7_Matte_NextDay,5_7_Matte_Hour,8_10_Gloss_NextDay,8_10_Gloss_Hour,8_10_Matte_NextDay,8_10_Matte_Hour,Discount Code,Expected_Total
 HOTC_1,0,0,0,0,0,0,0,0,0,0,0,0, ,0
 HOTC_2,1,0,0,0,0,0,0,0,0,0,0,0, ,0.14
 HOTC_3,25,0,0,0,0,0,0,0,0,0,0,0, ,3.5
