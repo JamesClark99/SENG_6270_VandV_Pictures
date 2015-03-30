@@ -247,6 +247,7 @@ namespace VandV_ProtoType_2.BLL
         public KeyValuePair<decimal,string> applyDiscount(KeyValuePair<decimal,string> tempResult, TempResult got, InterfaceToBLL iBLL)
         {
 
+            
             Decimal upchargeTotal_temp;
             Decimal upcharge_per_temp;
             iBLL.Receipt = tempResult.Value;
@@ -308,7 +309,7 @@ namespace VandV_ProtoType_2.BLL
 
             iBLL.Receipt = iBLL.Receipt + "\n" + "Picking Largest Discount";
 
-            if ((tempTotalDiscountCode > tempTotalOver35))
+            if ((tempTotalDiscountCode >= tempTotalOver35))
             {
 
                 iBLL.Total_Price = iBLL.Total_Price - tempTotalDiscountCode;

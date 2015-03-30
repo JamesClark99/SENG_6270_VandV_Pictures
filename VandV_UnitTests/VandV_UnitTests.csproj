@@ -67,9 +67,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="VandVTestCases.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="VandVTestCases_Heterogeneous.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
