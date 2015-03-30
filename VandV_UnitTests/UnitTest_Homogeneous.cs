@@ -7,12 +7,12 @@ using VandV_ProtoType_2.BLL;
 
 namespace VandV_UnitTests
     {
-        //[TestClass]
+        [TestClass]
         public class UnitTest_Homogeneous
         {
-            //[TestMethod]
-            //        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"C:\JamesWorkingFolders\VisualStudio2013\t\VandV_ProtoType_2\VandV_UnitTests\VandVTestCases.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
-            //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases_Homogeneous.csv", "VandVTestCases_Homogeneous#csv", DataAccessMethod.Sequential)]
+            [TestMethod]
+            //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"C:\JamesWorkingFolders\VisualStudio2013\t\VandV_ProtoType_2\VandV_UnitTests\VandVTestCases.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
+            [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases_Homogeneous.csv", "VandVTestCases_Homogeneous#csv", DataAccessMethod.Sequential)]
             public void TestMethod_Final_Homogeneous()
             {
                 String errorMessage = "";
@@ -21,7 +21,7 @@ namespace VandV_UnitTests
                 VandV_ProtoType_2.BLL.InterfaceToBLL b = new InterfaceToBLL();
                 //            VandV_ProtoType_2.BLL.BLL_Debug d = new BLL_Debug();
 
-                VandV_ProtoType_2.BLL.BLL_Final d = new BLL_Final();
+                //VandV_ProtoType_2.BLL.BLL_Final d = new BLL_Final();
 
 
                 b.Count_4_6_Gloss_Day = Convert.ToInt32(TestContext.DataRow["4_6_Gloss_NextDay"]);

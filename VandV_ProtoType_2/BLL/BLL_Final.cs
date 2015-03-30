@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 
 namespace VandV_ProtoType_2.BLL
 {
@@ -20,6 +20,8 @@ namespace VandV_ProtoType_2.BLL
         public int GrossMatteCount4x6;
         public int GrossMatteCount5x7;
         public int GrossMatteCount8x10;
+
+        public int GrossTotal;
 
         public string Mode;
 
@@ -63,6 +65,15 @@ namespace VandV_ProtoType_2.BLL
             //....
             //..
             //-----------------------------------------------------------
+
+
+            priceAndReceipt = applyDiscount(priceAndReceipt, gotResult, iBLL);
+
+
+
+
+
+
 
             //-----------------------------------------------------------
             var resultBLL=new BLL.InterfaceToBLL();
@@ -188,6 +199,8 @@ namespace VandV_ProtoType_2.BLL
             toReturn.Mode = mode;
             toReturn.Size = size;
 
+            toReturn.GrossTotal = grossHomogeneousCount;
+
             return toReturn;
         }//end method getMode
         //======================================================================================================
@@ -227,5 +240,105 @@ namespace VandV_ProtoType_2.BLL
         {
             return false;
         }
+
+
+
+        //======================================================================================================
+        public KeyValuePair<decimal,string> applyDiscount(KeyValuePair<decimal,string> tempResult, TempResult got, InterfaceToBLL iBLL)
+        {
+
+            Decimal upchargeTotal_temp;
+            Decimal upcharge_per_temp;
+            iBLL.Receipt = tempResult.Value;
+            iBLL.Total_Price = tempResult.Key;
+            Decimal tempTotalDiscountCode = 0;
+            Decimal tempTotalOver35 = 0;
+
+            //----------------------------------------
+            //Discount Code
+            //----------------------------------------
+            //iBLL.Total_Discount = (decimal).5;
+
+            iBLL.Receipt = iBLL.Receipt + "\n" + "--------------------";
+            iBLL.Receipt = iBLL.Receipt + "\n" + "Checking Discounts";
+            iBLL.Receipt = iBLL.Receipt + "\n" + "--------------------";
+
+           
+            // check code conditions 
+            // charect discount code
+            // homogenous order
+            // max count 100 is required.
+            if ((iBLL.Discount_Code == "N56M2") & (got.Mode == "Homogeneous") & (got.GrossTotal == 100))
+            {
+                iBLL.Receipt = iBLL.Receipt + "\n" + "Discount $2:  ";// +iBLL.Discount_Code;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "-------- Discount Code:  " + iBLL.Discount_Code;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "-------- All Same Type:   True";
+                iBLL.Receipt = iBLL.Receipt + "\n" + "-------- Count = 100:     True:: " + iBLL.Total_Count;
+                tempTotalDiscountCode = 2;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "Potential Discount from Code::    2$";
+
+            }
+            else if (iBLL.Discount_Code.Length > 0)
+            {
+                iBLL.Total_Discount = (decimal)0.0;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "INVALID Discount Code Requirements: " + iBLL.Discount_Code + " total : " + iBLL.Total_Discount.ToString();
+                
+            }
+
+
+
+            //----------------------------------------
+            //Discount > 35$
+            // check if the 35$ discount applies
+            //----------------------------------------
+
+            if ((iBLL.Total_Price > (Decimal)35.0))
+            {
+
+                upcharge_per_temp = iBLL.Total_Price * (Decimal).05;
+                tempTotalOver35 = upcharge_per_temp;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "Potential Discount > 35$, 5%: " + upcharge_per_temp;// +"  Total: " + tempTotalOver35;
+
+            }
+
+
+            //---------------
+            //pick largest discount
+            //between the two options
+
+            iBLL.Receipt = iBLL.Receipt + "\n" + "Picking Largest Discount";
+
+            if ((tempTotalDiscountCode > tempTotalOver35))
+            {
+
+                iBLL.Total_Price = iBLL.Total_Price - tempTotalDiscountCode;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "Applying Discount Code Total: " + iBLL.Total_Price;
+
+            }
+            else if ((tempTotalOver35 > tempTotalDiscountCode))
+            {
+
+                iBLL.Total_Price = iBLL.Total_Price - tempTotalOver35;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "Applying Discount 35$, 5%, Total: " + iBLL.Total_Price;
+            }
+            else
+            {
+
+
+                iBLL.Receipt = iBLL.Receipt + "\n" + "No Discount, Total: " + iBLL.Total_Price;
+
+            }
+
+            iBLL.Receipt = iBLL.Receipt + "\n" + "---------------------";
+            iBLL.Receipt = iBLL.Receipt + "\n" + "Total :: " + iBLL.Total_Price;
+            iBLL.Receipt = iBLL.Receipt + "\n" + "---------------------";
+
+            iBLL.Total_Price = Math.Round(iBLL.Total_Price, 2, MidpointRounding.AwayFromZero);
+
+            return new KeyValuePair<decimal, string>(iBLL.Total_Price, iBLL.Receipt);
+            
+        }
+
+
     }
 }

@@ -7,12 +7,12 @@ using VandV_ProtoType_2.BLL;
 
 namespace VandV_UnitTests
 {
-    [TestClass]
+    //[TestClass]
     public class UnitTestCSVInput_Final
     {
-        [TestMethod]
+        //[TestMethod]
         
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases_Homogeneous.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
+        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases_Homogeneous.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
         public void TestMethod_CSV_Test1()
         {
             String errorMessage = "";
