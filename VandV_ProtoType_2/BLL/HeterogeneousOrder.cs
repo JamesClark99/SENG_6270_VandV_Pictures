@@ -61,31 +61,36 @@ namespace VandV_ProtoType_2.BLL
             //calculate the gross total number of prints
             int grossTotal1HourPrints =
                 count1Hour5x7 + count1Hour8x10 + count1Hour4x6;
-            
+            int totalcount = countTotal4x6 + countTotal5x7 + countTotal8x10; 
+
             //put this information in the receipt
             receipt += "Total 1 hour prints: " + grossTotal1HourPrints.ToString()+"\n";
             
 
             //calculate the total price added as a result of 1-hour processing
-            if (grossTotal1HourPrints < 0)
-            {
+//james            if (grossTotal1HourPrints < 0)
+            if (totalcount < 0)
+                {
                 //just sanity check
                 throw new Exception("Total price evaluated for heterogeneous order was less than zero. Something went wrong. Error@loc 197310-7611.");
 
             }
-            else if(grossTotal1HourPrints==0)
+//james            else if (grossTotal1HourPrints == 0)
+            else if (totalcount == 0)
             {
                 receipt += "Added amount: 0.00 for processing 1 hour prints."; 
             }
-            else if (grossTotal1HourPrints <= 60)
+//james            else if (grossTotal1HourPrints <= 60)
+            else if (totalcount <= 60)
             {
                 totalPrice += price1HourProcessLEQ60;
                 receipt += "Added amount: " + price1HourProcessLEQ60.ToString(formatter) + " for processing 1 hour prints.";
 
 
             }
-                
-            else if(grossTotal1HourPrints >60 && grossTotal1HourPrints <=100)
+
+//james            else if (grossTotal1HourPrints > 60 && grossTotal1HourPrints <= 100)
+            else if (totalcount > 60 && totalcount <= 100)
             {
                 totalPrice += price1HourProcessGT60;
                 receipt += "Added amount: " + price1HourProcessGT60.ToString(formatter) + " for processing 1 hour prints.\n";
