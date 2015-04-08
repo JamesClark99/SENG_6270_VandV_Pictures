@@ -68,23 +68,23 @@ namespace VandV_ProtoType_2.BLL
 
 
             //calculate the total price added as a result of 1-hour processing
-            //james            if (grossTotal1HourPrints < 0)
+            //if (grossTotal1HourPrints < 0)//james  Bug_Fix#-5  
 
-            if (grossTotal1HourPrints > 0)  //james find 2
+            if (grossTotal1HourPrints > 0)  //james find 2  Bug_Fix#-6
             {
-                if (totalcount < 0)
+                if (totalcount < 0) //james  Bug_Fix#-5
                 {
                     //just sanity check
                     throw new Exception("Total price evaluated for heterogeneous order was less than zero. Something went wrong. Error@loc 197310-7611.");
 
                 }
-                //james            else if (grossTotal1HourPrints == 0)
-                else if (totalcount == 0)
+                //else if (grossTotal1HourPrints == 0)
+                else if (totalcount == 0)//james  Bug_Fix#-5  
                 {
                     receipt += "Added amount: 0.00 for processing 1 hour prints.";
                 }
-                //james            else if (grossTotal1HourPrints <= 60)
-                else if (totalcount <= 60)
+                //else if (grossTotal1HourPrints <= 60)
+                else if (totalcount <= 60)//james  Bug_Fix#-5
                 {
                     totalPrice += price1HourProcessLEQ60;
                     receipt += "Added amount: " + price1HourProcessLEQ60.ToString(formatter) + " for processing 1 hour prints.";
@@ -92,8 +92,8 @@ namespace VandV_ProtoType_2.BLL
 
                 }
 
-    //james            else if (grossTotal1HourPrints > 60 && grossTotal1HourPrints <= 100)
-                else if (totalcount > 60 && totalcount <= 100)
+                 //else if (grossTotal1HourPrints > 60 && grossTotal1HourPrints <= 100)
+                else if (totalcount > 60 && totalcount <= 100)//james  Bug_Fix#-5
                 {
                     totalPrice += price1HourProcessGT60;
                     receipt += "Added amount: " + price1HourProcessGT60.ToString(formatter) + " for processing 1 hour prints.\n";
@@ -103,11 +103,11 @@ namespace VandV_ProtoType_2.BLL
                 {
                     throw new Exception("I should not be here..");
                 }
-            }//james - find 2
-                receipt += "Total final price: " + totalPrice.ToString(formatter);
-                //now that everything is done, return the evauated price.
-                return new KeyValuePair<decimal, string>(totalPrice, receipt);
-            }
+            }//james - find 2 Bug Fix 6
+            receipt += "Total final price: " + totalPrice.ToString(formatter);
+            //now that everything is done, return the evauated price.
+            return new KeyValuePair<decimal, string>(totalPrice, receipt);
+        }
         
 
         //===============================================================================================

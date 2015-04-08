@@ -274,6 +274,10 @@ namespace VandV_ProtoType_2.BLL
             // charect discount code
             // homogenous order
             // max count 100 is required.
+
+            // James - Bug-7 - convert to upper case
+            iBLL.Discount_Code = iBLL.Discount_Code.ToUpper();  //james Bug-7
+
             if ((iBLL.Discount_Code == "N56M2") & (got.Mode == "Homogeneous") & (got.GrossTotal == 100))
             {
                 iBLL.Receipt = iBLL.Receipt + "\n" + "Discount $2:  ";// +iBLL.Discount_Code;
