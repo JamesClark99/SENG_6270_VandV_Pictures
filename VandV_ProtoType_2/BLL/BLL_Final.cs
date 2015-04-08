@@ -79,7 +79,7 @@ namespace VandV_ProtoType_2.BLL
             var resultBLL=new BLL.InterfaceToBLL();
             //-----------------------------------------------------------
             //do assignments... and return the computed price, receipt, and discount.
-            
+            resultBLL.Total_Count = gotResult.GrossTotal;
             resultBLL.Total_Price = priceAndReceipt.Key;
             resultBLL.Receipt = priceAndReceipt.Value;
             //When ready, assign discount here.
@@ -265,9 +265,9 @@ namespace VandV_ProtoType_2.BLL
             //----------------------------------------
             //iBLL.Total_Discount = (decimal).5;
 
-            iBLL.Receipt = iBLL.Receipt + "\n" + "--------------------";
-            iBLL.Receipt = iBLL.Receipt + "\n" + "Checking Discounts";
-            iBLL.Receipt = iBLL.Receipt + "\n" + "--------------------";
+            iBLL.Receipt = iBLL.Receipt + "\n" + "----------------------";
+            iBLL.Receipt = iBLL.Receipt + "\n" + "Checking For Discounts";
+            iBLL.Receipt = iBLL.Receipt + "\n" + "----------------------";
 
            
             // check code conditions 
@@ -316,26 +316,35 @@ namespace VandV_ProtoType_2.BLL
             //pick largest discount
             //between the two options
 
-            iBLL.Receipt = iBLL.Receipt + "\n" + "Picking Largest Discount";
+            iBLL.Receipt = iBLL.Receipt + "\n" + "---Picking Largest Discount---";
 
-            if ((tempTotalDiscountCode >= tempTotalOver35))
+
+            if ((tempTotalDiscountCode == 0)&&(tempTotalOver35==0))
+            {
+                iBLL.Total_Price = Math.Round(iBLL.Total_Price, 2, MidpointRounding.AwayFromZero);
+                iBLL.Receipt = iBLL.Receipt + "\n" + "No Discount, Total: " + iBLL.Total_Price;
+            }
+            else if ((tempTotalDiscountCode > tempTotalOver35))
             {
 
                 iBLL.Total_Price = iBLL.Total_Price - tempTotalDiscountCode;
+                iBLL.Total_Price = Math.Round(iBLL.Total_Price, 2, MidpointRounding.AwayFromZero);
                 iBLL.Receipt = iBLL.Receipt + "\n" + "Applying Discount Code Total: " + iBLL.Total_Price;
 
             }
-            else if ((tempTotalOver35 > tempTotalDiscountCode))
+            else if ((tempTotalOver35 >= tempTotalDiscountCode))
             {
 
                 iBLL.Total_Price = iBLL.Total_Price - tempTotalOver35;
+                iBLL.Total_Price = Math.Round(iBLL.Total_Price, 2, MidpointRounding.AwayFromZero); 
                 iBLL.Receipt = iBLL.Receipt + "\n" + "Applying Discount 35$, 5%, Total: " + iBLL.Total_Price;
             }
             else
             {
 
 
-                iBLL.Receipt = iBLL.Receipt + "\n" + "No Discount, Total: " + iBLL.Total_Price;
+//                iBLL.Receipt = iBLL.Receipt + "\n" + "No Discount, Total: " + iBLL.Total_Price;
+                iBLL.Receipt = iBLL.Receipt + "\n" + "wut";
 
             }
 
@@ -343,7 +352,9 @@ namespace VandV_ProtoType_2.BLL
             iBLL.Receipt = iBLL.Receipt + "\n" + "Total :: " + iBLL.Total_Price;
             iBLL.Receipt = iBLL.Receipt + "\n" + "---------------------";
 
-            iBLL.Total_Price = Math.Round(iBLL.Total_Price, 2, MidpointRounding.AwayFromZero);
+            //iBLL.Total_Price = Math.Round(iBLL.Total_Price, 2, MidpointRounding.AwayFromZero);
+
+            
 
             return new KeyValuePair<decimal, string>(iBLL.Total_Price, iBLL.Receipt);
             
