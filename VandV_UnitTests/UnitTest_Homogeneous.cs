@@ -54,7 +54,8 @@ namespace VandV_UnitTests
                 TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
                 TestContext.WriteLine(string.Format("Test Case: {0} -- reciept: {1}",testCaseReference, b.Receipt));
 
-                Assert.AreEqual(test_result, expected_result);
+///james april 8                Assert.AreEqual(test_result, expected_result);
+                Assert.AreEqual(expected_result,test_result);
 
                 TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
 
