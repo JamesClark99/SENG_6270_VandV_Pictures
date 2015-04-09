@@ -4,16 +4,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VandV_ProtoType_2;
 using VandV_ProtoType_2.BLL;
 
+
 namespace VandV_UnitTests
 {
     [TestClass]
-    public class UnitTest_Heterogeneous
-    {
+    public class UnitTest_AllPairs
+    {    
 
         [TestMethod]
         //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"C:\JamesWorkingFolders\VisualStudio2013\t\VandV_ProtoType_2\VandV_UnitTests\VandVTestCases.csv", "VandVTestCases#csv", DataAccessMethod.Sequential)]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases_Heterogeneous.csv", "VandVTestCases_Heterogeneous#csv", DataAccessMethod.Sequential)]
-        public void TestMethod_Final_Heterogeneous()
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"VandVTestCases_AllPairs.csv", "VandVTestCases_AllPairs#csv", DataAccessMethod.Sequential)]
+        public void TestMethod_Final_AllPairsCombinatorical()
         {
             String errorMessage = "";
             String testCaseReference = "";
@@ -56,9 +57,9 @@ namespace VandV_UnitTests
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
             TestContext.WriteLine(string.Format("Test Case: {0} -- receipt: {1}", testCaseReference, b.Receipt));
 
-           ///james april 8 Assert.AreEqual(test_result, expected_result);
+///james april 8            Assert.AreEqual(test_result, expected_result);
             Assert.AreEqual(expected_result,test_result);
-
+            
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
 
         }

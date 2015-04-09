@@ -1,0 +1,11 @@
+TestCaseReference,4_6_Gloss_NextDay,4_6_Gloss_Hour,4_6_Matte_NextDay,4_6_Matte_Hour,5_7_Gloss_NextDay,5_7_Gloss_Hour,5_7_Matte_NextDay,5_7_Matte_Hour,8_10_Gloss_NextDay,8_10_Gloss_Hour,8_10_Matte_NextDay,8_10_Matte_Hour,Discount Code,Expected_Total
+AP01,0,0,5,5,5,5,5,5,5,5,5,5, ,29.30
+AP02,0,5,0,0,0,0,0,0,0,0,0,0,N56M2,1.70
+AP03,5,0,0,5,0,5,0,5,0,5,0,5,N56M2,16.60
+AP04,5,5,5,0,5,0,5,0,5,0,5,0, ,17.55
+AP05,5,0,5,0,0,5,0,0,5,5,0,0, ,13.95
+AP06,5,5,0,5,5,0,5,5,0,0,5,5,N56M2,20.20
+AP07,0,0,5,5,5,0,0,0,0,5,0,0, ,10.20
+AP08,5,5,0,0,0,5,5,5,5,0,5,5,N56M2,23.00
+AP09,5,0,5,0,5,0,5,5,5,0,0,0,N56M2,14.50
+AP10,5,5,0,0,0,0,0,0,5,5,5,5, ,20.50

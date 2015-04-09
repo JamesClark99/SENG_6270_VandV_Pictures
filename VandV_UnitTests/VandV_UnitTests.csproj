@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="UnitTest_AllPairs.cs" />
     <Compile Include="UnitTestCSVInput_Final.cs" />
     <Compile Include="UnitTest_Generic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="VandVTestCases_AllPairs.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="VandVTestCases_Heterogeneous.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

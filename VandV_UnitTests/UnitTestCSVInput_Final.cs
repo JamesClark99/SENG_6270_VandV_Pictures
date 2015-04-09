@@ -50,7 +50,9 @@ namespace VandV_UnitTests
 
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
 
-            Assert.AreEqual(test_result, expected_result);
+            //Assert.AreEqual(test_result, expected_result);
+            Assert.AreEqual(expected_result, test_result);
+
             Console.WriteLine("Completing test..");
 
             TestContext.WriteLine(string.Format("Test Case: {0} -- test_result: {1}, expected_result: {2}, AssertResult: {3}", testCaseReference, test_result, expected_result, errorMessage));
