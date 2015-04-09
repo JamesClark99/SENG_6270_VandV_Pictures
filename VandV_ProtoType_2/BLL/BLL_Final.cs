@@ -116,8 +116,6 @@ namespace VandV_ProtoType_2.BLL
             var mode = "";
             var size = "";
             
-
-
             int grossHomogeneousCount=101;
             //Begin the actual sorting process..
             if (grossCount4x6 == 0 && grossCount5x7 == 0 && grossCount8x10 >= 0)
@@ -183,10 +181,7 @@ namespace VandV_ProtoType_2.BLL
             else if (grossHomogeneousCount < 0)
                 throw new Exception(" This is an internal application logic error. I shouldn't be here.");
             else
-
-                // james  Console.WriteLine("Proceeding with analysis. Gross Homogeneous Order Count: " + grossHomogeneousCount.ToString() + ".\n");
-                // james  not garanteed to be homogenous at this point, this line is being printed for heterogenous orders also  
-                Console.WriteLine("Proceeding with analysis. Gross Order Count: " + grossHomogeneousCount.ToString() + ".\n");
+                Console.WriteLine("Proceeding with analysis. Gross Homogeneous Order Count: " + grossHomogeneousCount.ToString() + ".\n");
 
             TempResult toReturn;
             toReturn.GrossCount4x6 = grossCount4x6;
@@ -253,7 +248,7 @@ namespace VandV_ProtoType_2.BLL
         {
 
             
-            Decimal upchargeTotal_temp;
+            
             Decimal upcharge_per_temp;
             iBLL.Receipt = tempResult.Value;
             iBLL.Total_Price = tempResult.Key;
