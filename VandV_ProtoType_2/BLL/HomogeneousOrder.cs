@@ -97,8 +97,7 @@ namespace VandV_ProtoType_2.BLL
             else if (countTotal <= 50)
                 totalPrice =
                     (decimal)countTotal * rateLEQ50;
-            //else if (countTotal <= 75)
-            else if (countTotal <= 60)          //bug 3
+            else if (countTotal <= 60)         
                 totalPrice =
                     (decimal)(countTotal - 50) * rateLEQ75 + (decimal)50 * rateLEQ50;
             else if (countTotal <= 100)

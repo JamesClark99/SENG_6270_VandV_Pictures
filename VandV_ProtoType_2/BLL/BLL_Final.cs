@@ -313,8 +313,7 @@ namespace VandV_ProtoType_2.BLL
             // check if the 35$ discount applies
             //----------------------------------------
 
-//            if ((iBLL.Total_Price > (Decimal)35.0))
-            if ((iBLL.Total_Price > (Decimal)34.0))     //bug 1
+            if ((iBLL.Total_Price > (Decimal)34.0))    
             {
 
                 upcharge_per_temp = iBLL.Total_Price * (Decimal).05;
