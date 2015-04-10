@@ -288,7 +288,7 @@ namespace VandV_ProtoType_2.BLL
                 iBLL.Receipt = iBLL.Receipt + "\n" + "---INVALID Discount Code Requirements--- ";// +iBLL.Discount_Code + " total : " + iBLL.Total_Discount.ToString();
                 if (iBLL.Discount_Code != "N56M2")
                 {
-                    iBLL.Receipt = iBLL.Receipt + "\n" + "INVALID Discount Code Requirements:  Invalid Code:: ((" + iBLL.Discount_Code +"))";
+                    iBLL.Receipt = iBLL.Receipt + "\n" + "INVALID Discount Code Requirements:  Invalid Code:: ((" + iBLL.Discount_Code + "))";
 
                 }
                 if (got.Mode != "Homogeneous")
@@ -303,7 +303,7 @@ namespace VandV_ProtoType_2.BLL
                 }
                 //iBLL.Total_Discount = (decimal)0.0;
                 //iBLL.Receipt = iBLL.Receipt + "\n" + "INVALID Discount Code Requirements: " + iBLL.Discount_Code + " total : " + iBLL.Total_Discount.ToString();
-                
+
             }
 
 
@@ -313,7 +313,8 @@ namespace VandV_ProtoType_2.BLL
             // check if the 35$ discount applies
             //----------------------------------------
 
-            if ((iBLL.Total_Price > (Decimal)35.0))
+//            if ((iBLL.Total_Price > (Decimal)35.0))
+            if ((iBLL.Total_Price > (Decimal)34.0))     //bug 1
             {
 
                 upcharge_per_temp = iBLL.Total_Price * (Decimal).05;

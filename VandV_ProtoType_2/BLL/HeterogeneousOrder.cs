@@ -84,7 +84,8 @@ namespace VandV_ProtoType_2.BLL
                     receipt += "Added amount: 0.00 for processing 1 hour prints.";
                 }
                 //else if (grossTotal1HourPrints <= 60)
-                else if (totalcount <= 60)//james  Bug_Fix#-5
+//                else if (totalcount <= 60)//james  Bug_Fix#-5
+                else if (totalcount < 60)//james  Bug_Fix#-5    bug -2 
                 {
                     totalPrice += price1HourProcessLEQ60;
                     receipt += "Added amount: " + price1HourProcessLEQ60.ToString(formatter) + " for processing 1 hour prints.";

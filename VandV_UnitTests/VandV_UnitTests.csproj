@@ -68,15 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="VandVTestCases_AllPairs.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="VandVTestCases_Heterogeneous.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="VandVTestCases_Homogeneous.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="VandVTestCases_AllPairs.csv" />
+    <None Include="VandVTestCases_Heterogeneous.csv" />
+    <None Include="VandVTestCases_Homogeneous.csv" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
